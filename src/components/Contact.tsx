@@ -5,14 +5,32 @@ export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
     const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         setStatus('sending')
-        setTimeout(() => {
-            setStatus('sent')
-            setForm({ name: '', email: '', subject: '', message: '' })
+
+        try {
+            const response = await fetch('https://formspree.io/f/mqaebrjr', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(form)
+            })
+
+            if (response.ok) {
+                setStatus('sent')
+                setForm({ name: '', email: '', subject: '', message: '' })
+                setTimeout(() => setStatus('idle'), 4000)
+            } else {
+                setStatus('error')
+                setTimeout(() => setStatus('idle'), 4000)
+            }
+        } catch (error) {
+            setStatus('error')
             setTimeout(() => setStatus('idle'), 4000)
-        }, 1500)
+        }
     }
 
     return (

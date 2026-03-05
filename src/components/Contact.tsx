@@ -106,27 +106,27 @@ export default function Contact() {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                                 <div>
                                     <label htmlFor="name" className="block text-[0.82rem] font-semibold mb-1.5 text-[var(--color-text-secondary)]">Full Name</label>
-                                    <input type="text" id="name" className="form-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required placeholder="Your full name" />
+                                    <input type="text" id="name" name="name" className="form-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required placeholder="Your full name" />
                                 </div>
                                 <div>
                                     <label htmlFor="email" className="block text-[0.82rem] font-semibold mb-1.5 text-[var(--color-text-secondary)]">Email</label>
-                                    <input type="email" id="email" className="form-input" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required placeholder="your@email.com" />
+                                    <input type="email" id="email" name="email" className="form-input" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required placeholder="your@email.com" />
                                 </div>
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="subject" className="block text-[0.82rem] font-semibold mb-1.5 text-[var(--color-text-secondary)]">Subject</label>
-                                <input type="text" id="subject" className="form-input" value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} required placeholder="How can I help?" />
+                                <input type="text" id="subject" name="subject" className="form-input" value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} required placeholder="How can I help?" />
                             </div>
                             <div className="mb-5">
                                 <label htmlFor="message" className="block text-[0.82rem] font-semibold mb-1.5 text-[var(--color-text-secondary)]">Message</label>
-                                <textarea id="message" rows={4} className="form-input resize-y min-h-[100px]" value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} required placeholder="Tell me about your project or opportunity..."></textarea>
+                                <textarea id="message" name="message" rows={4} className="form-input resize-y min-h-[100px]" value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} required placeholder="Tell me about your project or opportunity..."></textarea>
                             </div>
                             <button
                                 type="submit"
                                 className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[var(--radius-lg)] font-semibold text-[0.9rem] transition-all duration-300 gradient-bg text-white shadow-[0_4px_20px_rgba(99,102,241,0.25)] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(99,102,241,0.35)] ${status === 'sending' ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 disabled={status === 'sending'}
                             >
-                                {status === 'sending' ? 'Sending...' : status === 'sent' ? '✓ Message Sent!' : 'Send Message'}
+                                {status === 'sending' ? 'Sending...' : status === 'sent' ? '✓ Message Sent!' : status === 'error' ? '❌ Error! Try Again' : 'Send Message'}
                             </button>
                         </form>
                     </ScrollReveal>

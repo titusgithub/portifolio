@@ -10,7 +10,7 @@ export default function Contact() {
         setStatus('sending')
 
         try {
-            const response = await fetch('https://formspree.io/f/tituskagina78@gmail.com', {
+            const response = await fetch('https://formspree.io/f/xaqpweed', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

@@ -2,7 +2,7 @@ import ScrollReveal from './ScrollReveal'
 
 const experiences = [
     {
-        period: '2026 – Present',
+        period: 'January 2026 – Present',
         role: 'ICT Intern',
         company: 'Salary and Remuneration Commission',
         points: [

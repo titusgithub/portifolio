@@ -14,7 +14,7 @@ const experiences = [
         ],
     },
     {
-        period: 'January 2026 – Present',
+        period: 'July 2025 – Present',
         role: 'Technical Operations Consultant',
         company: 'Tribus TSG Ltd',
         points: [
